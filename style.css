@@ -1,0 +1,38 @@
+@keyframes fly1 {
+    0% {margin-left: 0}
+    100% {margin-left: 100%}
+}
+
+@keyframes fly2 {
+    0% {margin-left: -100%}
+    100% {margin-left: 0}
+}
+
+
+.c1 {
+    display: inline-block;
+    position: absolute;
+    width: 120%;
+    /* transition: all 0.5s ease; */
+    animation: fly1 20s linear infinite;
+}
+
+.c2 {
+    display: inline-block;
+    position: absolute;
+    width: 120%;
+    /* transition: all 0.5s ease; */
+    animation: fly2 20s linear infinite;
+}
+
+
+p {
+    font-family: sans-serif;
+    font: x-large;
+}
+
+p:hover {
+    transform: scale(5);
+    cursor: pointer;
+    color: magenta;
+}
