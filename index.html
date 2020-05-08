@@ -2,10 +2,68 @@
 <html>
     <head>
         <title>The Rick Roller</title>
-        <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script defer src="script.js"></script>
+        <style>
+            body {
+                margin: 0;
+                cursor: help;
+            }
+
+            #video-container {
+                position: fixed;
+                z-index: -10;
+                width: 100%;
+                height: 100%
+            }
+
+            #container {
+                /*position: fixed;*/
+                /*background-color: rgba(0, 0, 0, 0.2);*/
+                /*width: 100%;*/
+                /*height: 100%*/
+            }
+
+
+            @keyframes fly1 {
+                0% {margin-left: 0}
+                100% {margin-left: 100%}
+            }
+
+            @keyframes fly2 {
+                0% {margin-left: -100%}
+                100% {margin-left: 0}
+            }
+
+
+            .c1 {
+                display: inline-block;
+                position: absolute;
+                width: 120%;
+                animation: fly1 20s linear infinite;
+            }
+
+            .c2 {
+                display: inline-block;
+                position: absolute;
+                width: 120%;
+                animation: fly2 20s linear infinite;
+            }
+
+
+            p {
+                font-size: x-large;
+                font-family: 'Times New Roman', Times, serif;
+                font-style: oblique;
+            }
+
+            p:hover {
+
+                transform: scale(3);
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+                background-image: linear-gradient(to right, rgb(255,113,206), rgb(1,205,254))
+            }
+        </style>
     </head>
 
 
@@ -13,7 +71,7 @@
 
 
 
-    
+
     <div id="container">
         <div class="c1">
             <p>We're no strangers to love</p>
@@ -74,13 +132,33 @@
             <p>Never gonna make you cry</p>
         </div>
     </div>
-        
+
 
         <div id="video-container">
-            <iframe width="100%" height="100%" 
-            src="https://www.youtube.com/embed/rvkuCUP-sgE?autoplay=1&loop=1&controls=0&mute=1" 
+            <iframe width="100%" height="100%"
+            src="https://www.youtube.com/embed/PdN8PAIJqcs?autoplay=1&loop=1&controls=0"
             frameborder="0"></iframe>
         </div>
 
+
     </body>
+
+    <script>
+        let lines = document.getElementsByTagName("p");
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+
+
+        for (let line of lines) {
+            line.style.position = "absolute";
+            line.style.left = String(Math.random()*w)+"px";
+            line.style.top = String(Math.random()*h)+"px";
+            line.style.color = Math.random() > 0.5 ? "rgb(255,113,206)" : "rgb(1,205,254)"
+        }
+
+        let c2  = document.querySelector(".c1").cloneNode(deep=true);
+        c2.classList.remove('c1');
+        c2.classList.add('c2');
+        document.getElementById('container').appendChild(c2);
+    </script>
 </html>
